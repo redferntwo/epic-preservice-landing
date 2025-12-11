@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Pre-Service Teachers - Race to 500 | Get Epic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --epic-blue: #0a96e6;
+            --epic-coral: #EE2E60;
+            --epic-purple: #3F1E56;
+            --epic-yellow: #E6D02C;
+            --epic-pink: #E9559B;
+            --epic-green: #02613b;
+            --epic-light-blue: #94D0D2;
+            --epic-black: #000000;
+            --epic-white: #FFFFFF;
+            --epic-grey: #CBCCCE;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--epic-white);
+            color: var(--epic-black);
+            overflow-x: hidden;
+        }
+        
+        /* Animated background circles */
+        .bg-decoration {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .circle-1 {
+            width: 800px;
+            height: 800px;
+            background: var(--epic-blue);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .circle-2 {
+            width: 600px;
+            height: 600px;
+            background: var(--epic-pink);
+            bottom: -150px;
+            left: -150px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        
+        .circle-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--epic-yellow);
+            top: 40%;
+            left: 10%;
+            animation: float 30s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+        
+        /* Header */
+        header {
+            position: relative;
+            padding: 24px 40px;
+            background: var(--epic-white);
+            z-index: 100;
+            border-bottom: 3px solid var(--epic-blue);
+        }
+        
+        .logo-link {
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .logo-svg {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-link:hover .logo-svg {
+            transform: scale(1.05);
+        }
+        
+        /* Hero Banner Section */
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, var(--epic-blue) 0%, var(--epic-light-blue) 100%);
+            padding: 60px 40px;
+            overflow: hidden;
+        }
+        
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .banner-text h2 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            color: var(--epic-white);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .banner-text p {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+        }
+        
+        .banner-visual {
+            position: relative;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Illustration elements */
+        .visual-element {
+            position: absolute;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .book-1 {
+            width: 180px;
+            height: 240px;
+            background: linear-gradient(135deg, var(--epic-yellow), var(--epic-coral));
+            transform: rotate(-8deg);
+            left: 20%;
+            top: 10%;
+            animation: floatBook 6s ease-in-out infinite;
+        }
+        
+        .book-2 {
+            width: 160px;
+            height: 220px;
+            background: linear-gradient(135deg, var(--epic-pink), var(--epic-purple));
+            transform: rotate(12deg);
+            right: 25%;
+            top: 20%;
+            animation: floatBook 7s ease-in-out infinite 1s;
+        }
+        
+        .book-3 {
+            width: 140px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--epic-white), var(--epic-light-blue));
+            transform: rotate(-5deg);
+            left: 40%;
+            bottom: 15%;
+            animation: floatBook 8s ease-in-out infinite 2s;
+        }
+        
+        @keyframes floatBook {
+            0%, 100% { transform: translateY(0) rotate(var(--rotate)); }
+            50% { transform: translateY(-20px) rotate(var(--rotate)); }
+        }
+        
+        .book-1 { --rotate: -8deg; }
+        .book-2 { --rotate: 12deg; }
+        .book-3 { --rotate: -5deg; }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            text-align: center;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--epic-blue);
+            color: var(--epic-white);
+            padding: 12px 32px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            animation: slideDown 0.6s ease-out;
+            box-shadow: 0 8px 24px rgba(10, 150, 230, 0.3);
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            color: var(--epic-black);
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+        
+        .highlight {
+            color: var(--epic-blue);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: var(--epic-yellow);
+            opacity: 0.4;
+            z-index: -1;
+            animation: underlineGrow 1s ease-out 1s both;
+        }
+        
+        @keyframes underlineGrow {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-description {
+            font-size: clamp(20px, 3vw, 28px);
+            line-height: 1.6;
+            color: var(--epic-purple);
+            max-width: 800px;
+            margin: 0 auto 48px;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+        
+        .cta-container {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.6s both;
+        }
+        
+        .btn {
+            padding: 20px 48px;
+            border-radius: 100px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary {
+            background: var(--epic-blue);
+            color: var(--epic-white);
+            box-shadow: 0 12px 32px rgba(10, 150, 230, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 16px 40px rgba(10, 150, 230, 0.5);
+        }
+        
+        .btn-secondary {
+            background: var(--epic-white);
+            color: var(--epic-blue);
+            border: 3px solid var(--epic-blue);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-4px) scale(1.05);
+            background: var(--epic-blue);
+            color: var(--epic-white);
+        }
+        
+        /* Progress Section */
+        .progress-section {
+            background: var(--epic-blue);
+            color: var(--epic-white);
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255, 255, 255, 0.03) 20px,
+                    rgba(255, 255, 255, 0.03) 40px
+                );
+            pointer-events: none;
+        }
+        
+        .progress-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .race-counter {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .counter-label {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        
+        .counter-display {
+            font-size: clamp(64px, 12vw, 120px);
+            font-weight: 800;
+            line-height: 1;
+            font-family: 'Space Mono', monospace;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .counter-target {
+            font-size: clamp(24px, 4vw, 36px);
+            margin-top: 16px;
+            opacity: 0.8;
+        }
+        
+        .progress-bar-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            height: 32px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--epic-yellow), var(--epic-pink));
+            border-radius: 100px;
+            width: 12%;
+            transition: width 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Benefits Grid */
+        .benefits-section {
+            padding: 120px 40px;
+            background: var(--epic-white);
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+        
+        .section-title {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--epic-black);
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--epic-purple);
+            line-height: 1.6;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefit-card {
+            background: var(--epic-white);
+            border: 3px solid var(--epic-black);
+            border-radius: 24px;
+            padding: 48px 36px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 8px 8px 0 var(--epic-black);
+        }
+        
+        .benefit-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 var(--epic-black);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+        
+        .card-1 .benefit-icon { background: var(--epic-blue); color: var(--epic-white); }
+        .card-2 .benefit-icon { background: var(--epic-pink); color: var(--epic-white); }
+        .card-3 .benefit-icon { background: var(--epic-yellow); color: var(--epic-black); }
+        
+        .benefit-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--epic-black);
+        }
+        
+        .benefit-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--epic-purple);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: var(--epic-purple);
+            color: var(--epic-white);
+            padding: 120px 40px;
+            position: relative;
+        }
+        
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 80px;
+            align-items: flex-start;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .step:nth-child(1) { animation-delay: 0.2s; }
+        .step:nth-child(2) { animation-delay: 0.4s; }
+        .step:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-number {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--epic-yellow);
+            color: var(--epic-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 800;
+            font-family: 'Space Mono', monospace;
+            box-shadow: 0 8px 24px rgba(230, 208, 44, 0.4);
+        }
+        
+        .step-content h3 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+        
+        .step-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--epic-light-blue), var(--epic-white));
+            padding: 120px 40px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 800;
+            margin-bottom: 32px;
+            color: var(--epic-black);
+        }
+        
+        .final-cta p {
+            font-size: 24px;
+            color: var(--epic-purple);
+            margin-bottom: 48px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--epic-black);
+            color: var(--epic-white);
+            padding: 60px 40px 40px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--epic-white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--epic-blue);
+        }
+        
+        .footer-note {
+            font-size: 14px;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+            
+            .banner-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .banner-visual {
+                height: 200px;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .cta-container {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .step {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Decorations -->
+    <div class="bg-decoration circle-1"></div>
+    <div class="bg-decoration circle-2"></div>
+    <div class="bg-decoration circle-3"></div>
+
+    <!-- Header -->
+    <header>
+        <a href="https://getepic.com" class="logo-link">
+            <!-- REPLACE THIS LINE: Put your logo file path below -->
+            <img src="YOUR_LOGO_FILE_HERE.png" alt="Epic" class="logo-svg">
+            <!-- Example: <img src="epic_logo_blue_RGB.png" alt="Epic" class="logo-svg"> -->
+        </a>
+    </header>
+
+    <!-- Hero Banner with Imagery -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <div class="banner-text">
+                <h2>Future Teachers.<br>Future Readers.</h2>
+                <p>Empowering tomorrow's educators with today's best digital reading platform. Join thousands of pre-service teachers preparing to transform literacy.</p>
+            </div>
+            <div class="banner-visual">
+                <div class="visual-element book-1"></div>
+                <div class="visual-element book-2"></div>
+                <div class="visual-element book-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🎓 For Pre-Service Teachers</div>
+            <h1>
+                Join the <span class="highlight">Race to 500</span><br>
+                Unlock Free Epic School Plus
+            </h1>
+            <p class="hero-description">
+                Future educators unite! When 500 universities join our community by February 2026, 
+                <strong>ALL pre-service teachers unlock Epic School Plus FREE until June 30th</strong>. 
+                That's 40,000+ books for your classroom practice.
+            </p>
+            <div class="cta-container">
+                <a href="#signup" class="btn btn-primary">Sign Up with University Email</a>
+                <a href="#learn-more" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracker -->
+    <section class="progress-section">
+        <div class="progress-content">
+            <div class="race-counter">
+                <div class="counter-label">Universities Joined</div>
+                <div class="counter-display">62</div>
+                <div class="counter-target">of 500 Goal</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="learn-more">
+        <div class="section-header">
+            <h2 class="section-title">What You Get</h2>
+            <p class="section-subtitle">
+                We're not just giving you access—we're setting you up for success 
+                in the classroom from day one.
+            </p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card card-1">
+                <div class="benefit-icon">📚</div>
+                <h3 class="benefit-title">40,000+ Books</h3>
+                <p class="benefit-description">
+                    Access our entire library of high-quality read-aloud and independent reading books. 
+                    Perfect for diverse classrooms and differentiated instruction.
+                </p>
+            </div>
+            <div class="benefit-card card-2">
+                <div class="benefit-icon">🎯</div>
+                <h3 class="benefit-title">Free Training & PD</h3>
+                <p class="benefit-description">
+                    Get our "Getting Started with Epic School Plus" professional development, 
+                    1:1 onboarding calls, and a comprehensive starter guide.
+                </p>
+            </div>
+            <div class="benefit-card card-3">
+                <div class="benefit-icon">✨</div>
+                <h3 class="benefit-title">Real Classroom Tools</h3>
+                <p class="benefit-description">
+                    Practice with the same platform thousands of teachers use daily. 
+                    Build reading rosters, track progress, and assign books with confidence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Three simple steps to join the movement</p>
+        </div>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Sign Up Today</h3>
+                    <p>
+                        Register with your university email to get immediate pilot access to Epic School. 
+                        Start exploring the platform and building your teaching toolkit right away.
+                    </p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Spread the Word</h3>
+                    <p>
+                        Share with classmates, professors, and your teacher education program. 
+                        Every university represented gets us closer to unlocking Epic School Plus for everyone.
+                    </p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Unlock the Reward</h3>
+                    <p>
+                        When we hit 500 universities by February 2026, all pre-service teachers 
+                        automatically unlock Epic School Plus FREE until June 30th. No catches, just great tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="signup">
+        <h2>Ready to Join the Race?</h2>
+        <p>
+            Be part of the movement training tomorrow's literacy leaders. 
+            Sign up now and let's reach 500 universities together.
+        </p>
+        <div class="cta-container">
+            <a href="https://www.getepic.com/sign-up" class="btn btn-primary">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.getepic.com/educators">For Educators</a>
+            <a href="https://www.getepic.com/campus-partners">Campus Partners</a>
+            <a href="https://www.getepic.com/about">About Epic</a>
+            <a href="https://www.getepic.com/support">Support</a>
+        </div>
+        <p class="footer-note">
+            © 2025 Epic! Creations Inc. Available to pre-service teachers at accredited US universities. 
+            <a href="https://www.getepic.com/terms" style="color: var(--epic-blue);">Terms & Conditions</a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const counterElement = document.querySelector('.counter-display');
+        if (counterElement) {
+            observer.observe(counterElement);
+        }
+
+        function animateCounter() {
+            const target = 62;
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counterElement.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        // Progress bar animation
+        setTimeout(() => {
+            const progressBar = document.querySelector('.progress-bar');
+            if (progressBar) {
+                progressBar.style.width = '12.4%'; // 62 out of 500
+            }
+        }, 500);
+    </script>
+</body>
+</html>
